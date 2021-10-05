@@ -1,2 +1,2 @@
 # weathermap-api-hw-6
-Using a third party api to request weather related parameters and using them to execute within my own custom application.
+Using a third party api to request weather related parameters executing them within my own custom application.
