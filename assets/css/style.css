@@ -1,10 +1,33 @@
 :root {
+    --lightest-blue: rgb(210, 225, 233);
     --light-blue: rgb(154, 174, 185);
     --dark-blue: rgb(35, 36, 37);
-};
+}
+
+body {
+    background-color: var(--lightest-blue);
+}
 
 .header {
     background-color: var(--light-blue);
     color: var(--dark-blue);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-body {
+    flex: none;
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border:rgb(35, 36, 37) 2px solid;
+    margin: 10px;
+    text-decoration: none;
+    color: rgb(35, 36, 37);
+}
+
+.card-body:hover {
+    background-color: rgb(35, 36, 37);
+    text-decoration: none;
+    color: #fff;
+    transition: .3s;
 }

@@ -29,6 +29,7 @@
       <nav>
         <form class="form-inline">
           <input
+            id="search-input"
             class="form-control mr-sm-2"
             type="search"
             placeholder="Search"
@@ -45,11 +46,21 @@
       </nav>
     </header>
 
-    <div id="recent-search-container" class="weather">
-        <h2>Recent Searches</h2>
+    <div id="recent-search-container" class="weather" style="padding: 10px; padding-bottom: 0px;">
+        <div id="recent-searches" class="card" style="width: 20vw; height: 85vh;">
+            <h4 class="card-title" style="text-align: center; padding-top: 10px;">
+              Recent Searches
+            </h4>
+            <a class="card-body">
+                This is some text
+            </a>
+            <a class="card-body">
+                This is some text
+            </a>
+          </div>
         <ul id="recent-searches">
+
           <!--add recent searches in js here-->
-        </ul>
     </div>
 
     <div id="current-weather" class="weather">

@@ -8,18 +8,35 @@
 
 //create variables
 const apiKey = `7b2108bf7e20dd2cb90cba345009dacd`
+var searchInput = document.getElementById("search-input");
 var search = document.getElementById("search-button");
 var currentWeather = document.getElementById("current-weather");
 var forecast = document.getElementById("forecast");
 var recentSearch = document.getElementById("recent-seaarches");
-let city = denver;
 
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+var city;
 
-fetch(url)
+const handleInput = (e) => {
+    e.preventDefault();
+    city = e.target.value
+    console.log(city)
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    getSearch()
+}
+
+const getSearch = () => {
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+    fetch(url)
     .then(function (response) {
     return response.json();
     })
     .then(function (data) {
         console.log(data)
     })
+}
+
+searchInput.addEventListener("change", handleInput)
+search.addEventListener('click', handleSubmit)
