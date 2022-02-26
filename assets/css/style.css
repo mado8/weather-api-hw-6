@@ -6,12 +6,18 @@
 
 body {
     background-color: var(--lightest-blue);
+    box-sizing: border-box;
 }
 
 .header {
     background-color: var(--light-blue);
     color: var(--dark-blue);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#weather-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card-body {
@@ -32,4 +38,23 @@ body {
     text-decoration: none;
     color: #fff;
     transition: .3s;
+}
+
+#current-weather-card,
+#forecast-card {
+    margin-top: 10px;
+    box-sizing: border-box; 
+    width: 67.5vw; 
+    height: 41.7vh;
+    /* text-align: center; */
+}
+
+#my-weather-title div {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 800;
+}
+
+#weather-text {
+    margin-left: 50px;
 }

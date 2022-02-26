@@ -8,6 +8,11 @@ var myCities = JSON.parse(localStorage.getItem("myCities") || "[]");
 
 var city;
 
+const unixTimestamp = new Date()
+const weekday = unixTimestamp.toLocaleString("en-US", {weekday: "long"}) // Monday
+const month = unixTimestamp.toLocaleString("en-US", {month: "long"}) // December
+const day = unixTimestamp.toLocaleString("en-US", {day: "numeric"})
+
 const handleInput = (e) => {
     e.preventDefault();
     city = e.target.value
@@ -31,14 +36,23 @@ const getSearch = () => {
     })
     .then(function (data) {
         console.log(data)
+        document.getElementById('my-weather-title').innerHTML = `${`<div>${city.toUpperCase()}`} 
+        ${'<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png" alt="' + data.weather[0].description + '"></img>'}
+        ${`${weekday.toUpperCase()}, ${month.toUpperCase()} ${day}`}</div>`
+        document.getElementById('temp').innerHTML = `Temperature: ${data.main.temp} ºF`
+        document.getElementById('feels-like').innerHTML = `Feels Like: ${data.main.feels_like} ºF`
+        document.getElementById('wind').innerHTML = `Wind: ${data.wind.speed} MPH`
+        document.getElementById('humidity').innerHTML = `Humidity: ${data.main.humidity} %`
+        document.getElementById('uv-index')
     })
 }
 
 const renderOneCity = (city) => {
-    let a = document.createElement("a");
-        a.className += "card-body"
-        a.innerHTML = city
-        recentSearch.append(a)
+    let button = document.createElement("button");
+        button.className += "card-body"
+        button.setAttribute("value", city)
+        button.innerHTML = city
+        recentSearch.append(button)
 }
 
 const renderCities = () => {
@@ -48,6 +62,17 @@ const renderCities = () => {
        renderOneCity(city)
     })
 }
+
+
+recentSearch.addEventListener('click', (event) => {
+  const isButton = event.target.nodeName === 'BUTTON';
+  if (!isButton) {
+    return;
+  }
+
+  city = event.target.value;
+  getSearch()
+})
 
 searchInput.addEventListener("change", handleInput)
 search.addEventListener('click', handleSubmit)

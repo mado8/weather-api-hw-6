@@ -46,23 +46,46 @@
       </nav>
     </header>
 
-    <div id="recent-search-container" class="weather" style="padding: 10px; padding-bottom: 0px;">
-        <div id="recent-searches" class="card" style="box-sizing:border-box; width: 30vw; height: 85vh;">
-            <h4 class="card-title" style="text-align: center; padding-top: 10px;">
-              Recent Searches
-            </h4>
+    <div id="weather-container">
+      <div
+        id="recent-search-container"
+        class="weather"
+        style="padding: 10px; padding-bottom: 0px"
+      >
+        <div
+          id="recent-searches"
+          class="card"
+          style="box-sizing: border-box; width: 30vw; height: 85vh"
+        >
+          <h4 class="card-title" style="text-align: center; padding-top: 10px">
+            Recent Searches
+          </h4>
+        </div>
+        <!--add recent searches in js here-->
+      </div>
+
+      <div id="my-weather">
+        <div id="current-weather" class="weather">
+          <div id="current-weather-card" class="card">
+            <div id="my-weather-title" class="card-title"></div>
+            <div id="weather-text">
+              <p id="temp"></p>
+              <p id="feels-like"></p>
+              <p id="wind"></p>
+              <p id="humidity"></p>
+              <p id="uv-index"></p>
+            </div>
+            <!--add current weather using api here-->
           </div>
-        <ul id="recent-searches">
+        </div>
 
-          <!--add recent searches in js here-->
-    </div>
-
-    <div id="current-weather" class="weather">
-      <!--add current weather using api here-->
-    </div>
-
-    <div id="forecast" class="weather">
-      <!--add five day forecast here-->
+        <div id="forecast" class="weather">
+          <div id="forecast-card" class="card">
+            <!--add current weather using api here-->
+          </div>
+          <!--add five day forecast here-->
+        </div>
+      </div>
     </div>
 
     <script
