@@ -19,6 +19,7 @@ const handleSubmit = (e) => {
     myCities.push(city);
     localStorage.setItem('myCities', JSON.stringify(myCities))
     console.log(myCities)
+    renderOneCity(myCities[myCities.length -1])
     getSearch()
 }
 
@@ -33,14 +34,18 @@ const getSearch = () => {
     })
 }
 
-const renderCities = () => {
-    console.log(myCities)
-    myCities.forEach(city => {
-        console.log(city)
-        let a = document.createElement("a");
+const renderOneCity = (city) => {
+    let a = document.createElement("a");
         a.className += "card-body"
         a.innerHTML = city
         recentSearch.append(a)
+}
+
+const renderCities = () => {
+    console.log(myCities)
+    myCities.forEach(city => {
+       console.log(city)
+       renderOneCity(city)
     })
 }
 
