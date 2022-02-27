@@ -6,7 +6,7 @@ var forecast = document.getElementById("forecast");
 var recentSearch = document.getElementById("recent-searches");
 var myCities = JSON.parse(localStorage.getItem("myCities") || "[]");
 
-var city;
+var city = 'denver'
 
 const unixTimestamp = new Date()
 const weekday = unixTimestamp.toLocaleString("en-US", {weekday: "long"}) // Monday
@@ -30,11 +30,10 @@ const handleSubmit = (e) => {
 
 const getSearch = () => {
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-    fetch(url)
-    .then(function (response) {
+
+    fetch(url).then(function (response) {
     return response.json();
-    })
-    .then(function (data) {
+    }).then(function (data) {
         console.log(data)
         document.getElementById('my-weather-title').innerHTML = `${`<div>${city.toUpperCase()}`} 
         ${'<img src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png" alt="' + data.weather[0].description + '"></img>'}
@@ -43,8 +42,19 @@ const getSearch = () => {
         document.getElementById('feels-like').innerHTML = `Feels Like: ${data.main.feels_like} ºF`
         document.getElementById('wind').innerHTML = `Wind: ${data.wind.speed} MPH`
         document.getElementById('humidity').innerHTML = `Humidity: ${data.main.humidity} %`
-        document.getElementById('uv-index')
+        // document.getElementById('uv-index')
+    }) 
+}
+
+const getForecast = () => {
+    var url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+    
+    fetch(url).then(function (response) {
+    return response.json();
+    }).then(function (data) {
+        console.log(data)
     })
+
 }
 
 const renderOneCity = (city) => {
@@ -66,10 +76,7 @@ const renderCities = () => {
 
 recentSearch.addEventListener('click', (event) => {
   const isButton = event.target.nodeName === 'BUTTON';
-  if (!isButton) {
-    return;
-  }
-
+  if (!isButton) return;
   city = event.target.value;
   getSearch()
 })
@@ -77,3 +84,4 @@ recentSearch.addEventListener('click', (event) => {
 searchInput.addEventListener("change", handleInput)
 search.addEventListener('click', handleSubmit)
 renderCities();
+getSearch();

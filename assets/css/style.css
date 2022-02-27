@@ -58,3 +58,15 @@ body {
 #weather-text {
     margin-left: 50px;
 }
+
+#forecast-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weekly-weather {
+    margin: 3px;
+    box-sizing: border-box; 
+    width: 13vw; 
+    height: 41.7vh;
+}
