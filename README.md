@@ -9,6 +9,8 @@ This weather dashboard allows a user to view the current weather in any searched
 https://user-images.githubusercontent.com/88465484/155870091-84fedeb6-1676-4d39-87e5-749c8dd51891.mov
 
 ## Links
+Visit the live site at [https://mado8.github.io/weather-dashboard/][https://mado8.github.io/weather-dashboard/]
+
 ## Contact
 Madeline Donley
 
