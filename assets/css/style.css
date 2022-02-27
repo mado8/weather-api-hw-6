@@ -2,6 +2,9 @@
     --lightest-blue: rgb(210, 225, 233);
     --light-blue: rgb(154, 174, 185);
     --dark-blue: rgb(35, 36, 37);
+    --red-index: #ffcec5;
+    --yellow-index: #f5f0aa;
+    --green-index: #befaa3;
 }
 
 * {
@@ -48,7 +51,7 @@ body {
     box-sizing: border-box; 
     width: 67.5vw; 
     height: 31.7vh;
-    line-height: 15px;
+    line-height: 10px;
 }
 
 #forecast-card {
@@ -56,7 +59,14 @@ body {
     box-sizing: border-box; 
     width: 67.5vw; 
     height: 51.7vh;
-    /* text-align: center; */
+}
+
+#weather-card-0 {
+    margin-left: 10px;
+}
+
+#weather-card-4 {
+    margin-right: 10px;
 }
 
 #my-weather-title div {
@@ -87,7 +97,7 @@ body {
 }
 
 #forecast-text {
-    font-size: .6em;
+    font-size: .8em;
     text-align: center;
 }
 
@@ -97,6 +107,26 @@ body {
     margin-bottom: 10px;
     box-sizing: border-box; 
     height: 51.7vh;
+}
+
+.green, 
+.yellow,
+.red {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.green {
+    background-color: var(--green-index);
+}
+
+.yellow {
+    background-color: var(--yellow-index)
+}
+
+.red {
+    background-color: var(--red-index)
 }
 
 @media screen and (max-width: 800px) {
@@ -111,13 +141,32 @@ body {
     }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 480px) {
     #current-weather-card,
     #forecast-card {
         width: 62vw;
     }
+    #current-weather-card {
+        height: 40vh;
+    }
+    #weather-text {
+        margin-left: 20px;
+        padding-top: 15px;
+    }
+    #weather-card-0 {
+        margin-left: 3px;
+    }
+    
+    #weather-card-4 {
+        margin-right: 3px;
+    }
+
+    #forecast-card {
+        height: 140vh;
+    }
 
     .weekly-weather {
-        height: 24.75vh;
+        width: 60.2vw;
+        height: 27vh;
     }
 }
