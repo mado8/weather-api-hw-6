@@ -9,9 +9,12 @@ var myCities = JSON.parse(localStorage.getItem("myCities") || "[]");
 var city = 'denver'
 
 const unixTimestamp = new Date()
-const weekday = unixTimestamp.toLocaleString("en-US", {weekday: "long"}) // Monday
-const month = unixTimestamp.toLocaleString("en-US", {month: "long"}) // December
+const weekday = unixTimestamp.toLocaleString("en-US", {weekday: "long"})
+const month = unixTimestamp.toLocaleString("en-US", {month: "long"})
 const day = unixTimestamp.toLocaleString("en-US", {day: "numeric"})
+
+var date =  moment().add(1, 'days').format('l');
+console.log(date)
 
 const handleInput = (e) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ const handleSubmit = (e) => {
     localStorage.setItem('myCities', JSON.stringify(myCities))
     console.log(myCities)
     renderOneCity(myCities[myCities.length -1])
-    getSearch()
+    renderPage();
 }
 
 const getSearch = () => {
@@ -53,6 +56,22 @@ const getForecast = () => {
     return response.json();
     }).then(function (data) {
         console.log(data)
+        for(let i = 0; i<5; i++) {
+            const cardItem = document.getElementById(`weather-card-${i}`)
+            const nextDay = i+1;
+
+            cardItem.innerHTML = `
+                <div id="forecast-title">
+                    <h5 class="card-title">${moment().add(nextDay, 'days').format('l')}</h5>
+                    <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" alt="${data.list[i].weather[0].description}"></img>
+                </div>
+                <div id="forecast-text">
+                    <p>Temp: ${data.list[i].main.temp} ºF</p>
+                    <p>Wind: ${data.list[i].wind.speed} MPH</p>
+                    <p>Humidity: ${data.list[i].main.humidity} %</p>
+                </div>
+            `
+        }
     })
 
 }
@@ -73,15 +92,19 @@ const renderCities = () => {
     })
 }
 
+const renderPage = () => {
+    getSearch()
+    getForecast();
+}
+
 
 recentSearch.addEventListener('click', (event) => {
-  const isButton = event.target.nodeName === 'BUTTON';
-  if (!isButton) return;
+  if (!event.target.nodeName === 'BUTTON') return
   city = event.target.value;
-  getSearch()
+  renderPage()
 })
 
 searchInput.addEventListener("change", handleInput)
 search.addEventListener('click', handleSubmit)
 renderCities();
-getSearch();
+renderPage();

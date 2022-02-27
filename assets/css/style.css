@@ -4,6 +4,10 @@
     --dark-blue: rgb(35, 36, 37);
 }
 
+* {
+    color: var(--light-blue);
+}
+
 body {
     background-color: var(--lightest-blue);
     box-sizing: border-box;
@@ -25,12 +29,11 @@ body {
     height: fit-content;
     padding-top: 10px;
     padding-bottom: 10px;
-    border:rgb(35, 36, 37) 2px solid;
+    border: var(--light-blue) 2px solid;
     margin: 3px;
     margin-left: 15px;
     margin-right: 15px;
     text-decoration: none;
-    color: rgb(35, 36, 37);
 }
 
 .card-body:hover {
@@ -40,12 +43,19 @@ body {
     transition: .3s;
 }
 
-#current-weather-card,
+#current-weather-card {
+    margin-top: 10px;
+    box-sizing: border-box; 
+    width: 67.5vw; 
+    height: 31.7vh;
+    line-height: 15px;
+}
+
 #forecast-card {
     margin-top: 10px;
     box-sizing: border-box; 
     width: 67.5vw; 
-    height: 41.7vh;
+    height: 51.7vh;
     /* text-align: center; */
 }
 
@@ -64,9 +74,50 @@ body {
     flex-wrap: wrap;
 }
 
+#forecast-title {
+    text-align: center;
+}
+
+#forecast-title h5 {
+    font-size: 1em;
+}
+
+#forecast-title img {
+    width: 40px;
+}
+
+#forecast-text {
+    font-size: .6em;
+    text-align: center;
+}
+
 .weekly-weather {
-    margin: 3px;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box; 
-    width: 13vw; 
-    height: 41.7vh;
+    height: 51.7vh;
+}
+
+@media screen and (max-width: 800px) {
+    #current-weather-card,
+    #forecast-card {
+        width: 65vw;
+    }
+
+    .weekly-weather {
+        margin: 3px;
+        height: 24.75vh;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #current-weather-card,
+    #forecast-card {
+        width: 62vw;
+    }
+
+    .weekly-weather {
+        height: 24.75vh;
+    }
 }
